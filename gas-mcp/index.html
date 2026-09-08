@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>gas-mcp — Google Apps Script を AI アシスタントから操作するツール</title>
+<meta name="description" content="Google Apps Script プロジェクトの読み書き・デプロイを、MCP 経由で AI アシスタントから行うための個人用ツールです。">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+
+<h1>gas-mcp</h1>
+<p class="lead">
+Google Apps Script のプロジェクトを、AI アシスタント（MCP クライアント）から
+直接読み書き・デプロイするための個人用ツールです。
+</p>
+
+<h2>できること</h2>
+<p>
+利用者の PC 上で動作し、Google の Apps Script API と Drive API を通じて、
+利用者自身が所有する Apps Script プロジェクトを操作します。
+</p>
+<ul>
+  <li>Apps Script プロジェクトの一覧表示と検索</li>
+  <li>スクリプトのソースコードの読み取り</li>
+  <li>ソースコードの編集・ファイルの追加と削除</li>
+  <li>バージョンの作成とデプロイ（ウェブアプリ等の更新）</li>
+  <li>実行履歴の確認（エラー調査のため）</li>
+</ul>
+
+<h2>動作のしくみ</h2>
+<p>
+本ツールは <strong>利用者の PC 上でのみ動作するローカルプログラム</strong>です。
+開発者が運営するサーバーは存在せず、利用者のデータが開発者に届くことはありません。
+</p>
+<pre><code>利用者の PC
+  ├─ AI アシスタント（MCP クライアント）
+  └─ gas-mcp  ──────▶  Google API（Apps Script / Drive）</code></pre>
+<p>
+Google アカウントの認証情報（アクセストークン）は、
+利用者の PC 内（<code>~/.config/gas-mcp/</code>）にのみ保存されます。
+</p>
+
+<h2>利用するデータと権限</h2>
+<p>
+本ツールは、以下の Google API スコープへのアクセスを求めます。
+それぞれの用途は下表のとおりで、これ以外の目的には使用しません。
+</p>
+<table>
+  <thead><tr><th>スコープ</th><th>用途</th></tr></thead>
+  <tbody>
+    <tr><td><code>script.projects</code></td><td>スクリプトのソースコードの読み取りと書き込み</td></tr>
+    <tr><td><code>script.deployments</code></td><td>バージョンの作成とデプロイ</td></tr>
+    <tr><td><code>script.processes</code></td><td>実行履歴の取得（エラー調査）</td></tr>
+    <tr><td><code>script.metrics</code></td><td>実行回数などのメトリクス取得</td></tr>
+    <tr><td><code>drive.metadata.readonly</code></td><td>Apps Script プロジェクトの一覧取得（ファイル名と ID のみ。ファイルの中身は読みません）</td></tr>
+  </tbody>
+</table>
+<p>
+データの取り扱いの詳細は<a href="privacy.html">プライバシーポリシー</a>をご確認ください。
+</p>
+
+<h2>ソースコード</h2>
+<p>
+本ツールは個人利用を目的として開発されたものです。実装は
+<a href="https://github.com/okaniwa623">開発者の GitHub アカウント</a>で管理しています。
+</p>
+
+<h2>利用をやめるとき</h2>
+<p>
+Google アカウントの
+<a href="https://myaccount.google.com/connections">「サードパーティ製アプリとの連携」</a>
+から本ツールのアクセス権を削除すると、以後一切のアクセスができなくなります。
+あわせて PC 上の <code>~/.config/gas-mcp/</code> を削除してください。
+</p>
+
+<footer>
+  <a href="privacy.html">プライバシーポリシー</a>
+  <a href="terms.html">利用規約</a>
+  <br><br>
+  <span class="updated">最終更新: 2026年9月8日</span>
+</footer>
+
+</main>
+</body>
+</html>
