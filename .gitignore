@@ -1,1 +1,8 @@
 .DS_Store
+
+# materials/ は公開リポジトリなので原本を追跡しない（README と inbox/.gitkeep だけ）
+materials/*
+!materials/README.md
+!materials/inbox/
+materials/inbox/*
+!materials/inbox/.gitkeep
