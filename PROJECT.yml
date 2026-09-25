@@ -1,0 +1,18 @@
+# プロジェクトのメタ情報。人と機械の両方が読む。規約は ~/.claude/CLAUDE.md の「プロジェクトのメタ情報」。
+# 自分の立場は案件ごとに違うため me: は必ず書く。取りうる立場の一覧は ~/.claude/PROFILE.md。
+# public リポジトリのため、クライアント情報は書かない。
+project:
+  name: okaniwa623.github.io
+  kind: personal
+  status: active
+  purpose: |
+    自作ツールの説明ページとプライバシーポリシー・利用規約の置き場（GitHub Pages）。
+    Google の OAuth 同意画面を本番公開するために、実在ドメイン上のホームページ URL と
+    プライバシーポリシー URL が必要なため public にしている。機密情報は一切置かない。
+
+me:
+  stance: solo
+  company: null
+  team: null
+  role: 個人事業主
+  account: yuta.okaniwa@gmail.com
